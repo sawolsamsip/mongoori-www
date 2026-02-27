@@ -5,19 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>mongoori - Your Curated Lifestyle</title>
-  <meta name="description" content="Discover curated products, premium rentals, and unique spaces offered by mongoori." />
+  <meta name="description" content="mongoori is a curated lifestyle brand offering unique products, premium Tesla rentals, and private digital experiences." />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="mongoori LLC" />
+  <meta name="version" content="1.0.0" />
+
+  <link rel="canonical" href="https://www.mongoori.com/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mongoori.com/" />
+  <meta property="og:url" content="https://www.mongoori.com/" />
   <meta property="og:title" content="mongoori - Your Curated Lifestyle" />
-  <meta property="og:description" content="Discover curated products, premium rentals, and unique spaces." />
-  <meta property="og:image" content="https://mongoori.com/images/preview-image.jpg" />
+  <meta property="og:description" content="Discover curated products, premium Tesla rentals, and unique stays from mongoori." />
+  <meta property="og:image" content="https://www.mongoori.com/images/rides-bg.jpg" />
 
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://mongoori.com/" />
+  <meta property="twitter:url" content="https://www.mongoori.com/" />
   <meta property="twitter:title" content="mongoori - Your Curated Lifestyle" />
-  <meta property="twitter:description" content="Discover curated products, premium rentals, and unique spaces." />
-  <meta property="twitter:image" content="https://mongoori.com/images/preview-image.jpg" />
+  <meta property="twitter:description" content="Discover curated products, premium Tesla rentals, and unique stays from mongoori." />
+  <meta property="twitter:image" content="https://www.mongoori.com/images/rides-bg.jpg" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,46 +31,46 @@
 </head>
 
 <body>
-  <header class="hero">
+  <header class="hero" role="banner">
     <h1>mongoori</h1>
-    <p>Your Curated Lifestyle</p>
+    <p>Your curated lifestyle across products, rides, stays, and digital experiences.</p>
   </header>
 
-  <main class="container">
-    <section class="card" id="finds">
+  <main class="container" role="main">
+    <section class="card disabled" id="finds" aria-labelledby="finds-title">
       <div class="card-content">
-        <h2>mongoori Finds</h2>
-        <p>Discover unique and stylish items that add joy to your everyday life.</p>
-        <a href="#" class="button">Shop Now</a>
+        <h2 id="finds-title">mongoori Finds</h2>
+        <p>Curated objects and goods for daily life. Coming soon.</p>
+        <a href="javascript:void(0);" class="button" aria-disabled="true" title="This service is not yet available">Coming Soon</a>
       </div>
     </section>
 
-    <section class="card" id="rides">
+    <section class="card" id="rides" aria-labelledby="rides-title">
       <div class="card-content">
-        <h2>mongoori Rides</h2>
+        <h2 id="rides-title">mongoori Rides</h2>
         <p>Experience a premium Tesla rental service for your next journey.</p>
-        <a href="https://rides.mongoori.com" class="button">Book Your Tesla</a>
+        <a href="https://rides.mongoori.com" class="button" target="_blank" rel="noopener noreferrer">Book Your Tesla</a>
       </div>
     </section>
 
-    <section class="card" id="stream">
+    <section class="card" id="stream" aria-labelledby="stream-title">
       <div class="card-content">
-        <h2>mongoori Stream</h2>
+        <h2 id="stream-title">mongoori Stream</h2>
         <p>Your private streaming hub for movies, shows, and more.</p>
-        <a href="https://stream.mongoori.com" class="button">Open Stream</a>
+        <a href="https://stream.mongoori.com" class="button" target="_blank" rel="noopener noreferrer">Open Stream</a>
       </div>
     </section>
 
-    <section class="card disabled" id="stays">
+    <section class="card disabled" id="stays" aria-labelledby="stays-title">
       <div class="card-content">
-        <h2>mongoori Stays</h2>
-        <p>Coming Soon</p>
-        <a href="javascript:void(0);" class="button" title="This service is not yet available">Stay Tuned</a>
+        <h2 id="stays-title">mongoori Stays</h2>
+        <p>Thoughtfully designed stays that blend comfort, design, and locality.</p>
+        <a href="javascript:void(0);" class="button" aria-disabled="true" title="This service is not yet available">Coming Soon</a>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <p>
       <a href="mailto:contact@mongoori.com">Contact Us</a>
       <span class="separator">|</span>

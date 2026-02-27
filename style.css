@@ -13,6 +13,7 @@ body {
   background-color: var(--primary-light);
   color: var(--text-dark);
   text-align: center;
+  line-height: 1.5;
 }
 
 .hero {
@@ -176,5 +177,8 @@ footer a:hover {
 @media (max-width: 768px) {
   .hero h1 { font-size: 2.5em; }
   .hero p { font-size: 1em; }
-  .card { min-height: 380px; } /* ✅ 모바일에서도 과하게 안 큼 */
+  .card {
+    min-height: 360px;
+    margin: 10px;
+  }
 }
