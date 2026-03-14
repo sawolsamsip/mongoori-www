@@ -253,6 +253,26 @@
       line-height: 1.6;
     }
 
+    .vehicle-section, .safety-section {
+      border-radius: 12px;
+      padding: 28px 28px 20px;
+      margin: 48px 0;
+    }
+    .vehicle-section { background: #f9f9f9; }
+    .safety-section { background: #e8f0fe; }
+    .vehicle-section h2, .safety-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5em;
+      margin: 0 0 16px;
+      color: var(--text-dark);
+    }
+    .vehicle-section h3, .safety-section h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15em;
+      margin: 16px 0 12px;
+      color: var(--text-dark);
+    }
+
     @media (max-width: 600px) {
       .page-hero h1 { font-size: 2em; }
       .step { flex-direction: column; gap: 10px; }
@@ -380,11 +400,11 @@
     </section>
 
     <!-- Your Vehicle Section -->
-    <section class="vehicle-section" style="background: #f9f9f9; border-radius: 12px; padding: 28px 28px 20px; margin: 48px 0;">
-      <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.5em; margin: 0 0 16px; color: var(--text-dark);">Your Vehicle: Premium Tesla Experience</h2>
-      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.15em; margin: 16px 0 12px; color: var(--text-dark);">What You're Driving</h3>
+    <section class="vehicle-section" aria-labelledby="vehicle-title">
+      <h2 id="vehicle-title">Your Vehicle: Premium Tesla Experience</h2>
+      <h3>What You're Driving</h3>
       <p>All mongoori drivers get access to premium Tesla models:</p>
-      <ul style="margin: 8px 0;">
+      <ul>
         <li><strong>Model 3</strong> — Efficient, sleek, perfect for city driving</li>
         <li><strong>Model Y</strong> — Spacious, comfortable for longer trips</li>
         <li><strong>Model S</strong> — Premium comfort for luxury rides</li>
@@ -396,16 +416,16 @@
         <li>Insured — Comprehensive coverage included</li>
         <li>Equipped — Apple CarPlay, premium audio, climate control</li>
       </ul>
-      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.15em; margin: 16px 0 12px; color: var(--text-dark);">Vehicle Support</h3>
+      <h3>Vehicle Support</h3>
       <p><strong>24/7 Roadside Assistance:</strong> Flat tire? Mechanical issue? Accident damage? We've got you covered with replacement vehicles, towing, and repairs.</p>
       <p><strong>Maintenance & Cleaning:</strong> Oil changes, tire rotations, inspections — all covered. Monthly detail cleaning included.</p>
       <p><strong>Charging & Fuel:</strong> Charge free at mongoori charging stations in LA, OC, Irvine, and San Diego. Average charging time: 30–45 minutes for 200+ miles.</p>
     </section>
 
     <!-- Safety & Support Section -->
-    <section class="safety-section" style="background: #e8f0fe; border-radius: 12px; padding: 28px 28px 20px; margin: 48px 0;">
-      <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.5em; margin: 0 0 16px; color: var(--text-dark);">Safety & Support</h2>
-      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.15em; margin: 16px 0 12px; color: var(--text-dark);">How We Keep You Safe</h3>
+    <section class="safety-section" aria-labelledby="safety-title">
+      <h2 id="safety-title">Safety & Support</h2>
+      <h3>How We Keep You Safe</h3>
       <p><strong>In-Car Technology:</strong></p>
       <ul>
         <li>Dual cameras (front and interior, privacy protected)</li>
@@ -420,7 +440,7 @@
         <li>Trained staff — Drivers trained in support, not just ticket handling</li>
         <li>Multiple channels — Phone, chat, email</li>
       </ul>
-      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.15em; margin: 16px 0 12px; color: var(--text-dark);">Getting Help</h3>
+      <h3>Getting Help</h3>
       <p><strong>Live Chat:</strong> Available 24/7, average wait 2–3 minutes<br/>
       <strong>Phone:</strong> 1-800-MONGOORI (1-800-666-4674), available 24/7<br/>
       <strong>Email:</strong> drivers@mongoori.com, response within 1 hour</p>
