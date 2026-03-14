@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Driver FAQ — mongoori Rides</title>
+  <meta name="description" content="Frequently asked questions about driving with mongoori. Earnings, vehicle operations, support, scheduling, and more. Southern California Tesla rideshare." />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="mongoori LLC" />
+
+  <link rel="canonical" href="https://www.mongoori.com/faq.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.mongoori.com/faq.html" />
+  <meta property="og:title" content="Driver FAQ — mongoori Rides" />
+  <meta property="og:description" content="Everything you need to know about driving with mongoori. Earnings, Teslas, support, scheduling, and more." />
+  <meta property="og:image" content="https://www.mongoori.com/images/rides-bg.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    .page-nav {
+      background-color: var(--primary-dark);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .page-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9em;
+      transition: color 0.3s ease;
+    }
+    .page-nav a:hover { color: var(--text-light); }
+    .page-nav .brand {
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: 2px;
+      margin-right: auto;
+    }
+
+    .page-hero {
+      background-color: var(--primary-dark);
+      color: var(--text-light);
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8em;
+      margin: 0 0 12px;
+      letter-spacing: 2px;
+    }
+    .page-hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1em;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    .content-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      text-align: left;
+    }
+
+    /* FAQ TOC */
+    .faq-toc {
+      background: #f0f4fb;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .faq-toc h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+    }
+    .faq-toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 6px;
+    }
+    .faq-toc ul li a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-size: 0.92em;
+      display: block;
+      padding: 4px 0;
+    }
+    .faq-toc ul li a:hover { text-decoration: underline; }
+
+    /* FAQ sections */
+    .faq-section { margin-bottom: 52px; }
+    .faq-section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4em;
+      color: var(--text-dark);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 8px;
+      margin: 0 0 24px;
+    }
+
+    .faq-item { margin-bottom: 28px; }
+    .faq-question {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin: 0 0 10px;
+    }
+    .faq-answer {
+      color: #444;
+      font-size: 0.95em;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .faq-answer p { margin: 0 0 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer ul, .faq-answer ol {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+    .faq-answer li { margin-bottom: 4px; }
+    .faq-answer strong { color: var(--text-dark); }
+    .faq-answer table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      margin: 10px 0;
+    }
+    .faq-answer table th {
+      background: var(--primary-dark);
+      color: white;
+      padding: 8px 12px;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82em;
+    }
+    .faq-answer table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .faq-answer table tr:last-child td { border-bottom: none; }
+
+    .info-box {
+      background: #e8f0fe;
+      border-left: 3px solid var(--accent-color);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin: 10px 0;
+      font-size: 0.9em;
+      color: #333;
+    }
+
+    /* CTA */
+    .cta-banner {
+      background-color: var(--primary-dark);
+      color: var(--text-light);
+      border-radius: 12px;
+      padding: 32px 28px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .cta-banner h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6em;
+      margin: 0 0 10px;
+    }
+    .cta-banner p {
+      color: var(--text-muted);
+      margin: 0 0 20px;
+    }
+    .cta-banner .button {
+      background-color: var(--accent-color);
+      color: var(--text-light);
+      font-size: 1em;
+      padding: 14px 36px;
+    }
+    .cta-banner .button:hover { background-color: #3070c0; }
+
+    @media (max-width: 600px) {
+      .page-hero h1 { font-size: 2em; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="page-nav" aria-label="Site navigation">
+    <a href="index.html" class="brand">mongoori</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="faq.html" aria-current="page">Driver FAQ</a>
+    <a href="https://rides.mongoori.com" target="_blank" rel="noopener noreferrer">Apply to Drive</a>
+  </nav>
+
+  <header class="page-hero" role="banner">
+    <h1>Driver FAQ</h1>
+    <p>Frequently Asked Questions About Driving with mongoori</p>
+  </header>
+
+  <main class="content-wrap" role="main">
+
+    <nav class="faq-toc" aria-label="FAQ topics">
+      <h2>Jump to a Topic</h2>
+      <ul>
+        <li><a href="#earnings">Earnings &amp; Payment</a></li>
+        <li><a href="#vehicle">Vehicle &amp; Operations</a></li>
+        <li><a href="#charging">Charging Your Tesla</a></li>
+        <li><a href="#support">Support &amp; Safety</a></li>
+        <li><a href="#scheduling">Scheduling &amp; Flexibility</a></li>
+        <li><a href="#location">Location &amp; Requirements</a></li>
+        <li><a href="#account">Account &amp; Technical</a></li>
+      </ul>
+    </nav>
+
+    <!-- Earnings & Payment -->
+    <section class="faq-section" id="earnings" aria-labelledby="earnings-title">
+      <h2 class="faq-section-title" id="earnings-title">Earnings &amp; Payment</h2>
+
+      <div class="faq-item">
+        <h3 class="faq-question">How much can I earn with mongoori?</h3>
+        <div class="faq-answer">
+          <p>Most mongoori drivers earn between $1,200–$1,800 per week, depending on how many hours you drive and where. Top performers consistently earn $2,000+.</p>
+          <p>Your actual earnings depend on:</p>
+          <ul>
+            <li><strong>Hours driven</strong> — More hours = more rides = more earnings</li>
+            <li><strong>Location</strong> — High-demand areas (downtown LA, airport routes) pay more</li>
+            <li><strong>Time of day</strong> — Peak hours (mornings, evenings) have surge pricing (1.5x–2x rates)</li>
+            <li><strong>Your rating</strong> — Higher-rated drivers get priority for premium rides</li>
+            <li><strong>Tips</strong> — Passengers can tip after every ride; you keep 100%</li>
+          </ul>
+          <p><strong>Example:</strong> Drive 25 hours/week during peak times and earn $1,400–$1,600. Work weekends only (12 hours) and earn $600–$800.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">When and how do I get paid?</h3>
+        <div class="faq-answer">
+          <p>You choose your payout schedule:</p>
+          <ul>
+            <li><strong>Daily Deposit</strong> — Cash out anytime (small fee of 1–2% applies). Best if you need money fast.</li>
+            <li><strong>Weekly Automatic Deposit</strong> — Free transfer every Monday. Predictable, routine paychecks.</li>
+            <li><strong>Monthly Deposit</strong> — Free transfer on the 1st of each month. Fewer transactions, great for budgeting.</li>
+          </ul>
+          <p>All payments go directly to your bank account via ACH transfer. No checks, no delays, no middlemen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Are there bonuses or incentives?</h3>
+        <div class="faq-answer">
+          <ul>
+            <li><strong>Referral Bonuses</strong> — Earn $100–$500 when you refer another driver who completes 25 rides</li>
+            <li><strong>Surge Pricing</strong> — During peak hours (7–9 AM, 5–7 PM weekdays), you earn the full surge amount. No cut taken by mongoori.</li>
+            <li><strong>Streak Bonuses</strong> — Complete rides during peak hours for extra rewards (e.g., 5 peak-hour rides = $25 bonus)</li>
+            <li><strong>Loyalty Rewards</strong> — Long-term drivers (6+ months) get priority for premium rides and milestone bonuses</li>
+            <li><strong>Tips</strong> — 100% of passenger tips go to you</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What about taxes and deductions?</h3>
+        <div class="faq-answer">
+          <p>You're an independent contractor, so taxes are your responsibility. Key points:</p>
+          <ul>
+            <li>You're responsible for federal and California income tax</li>
+            <li>We recommend setting aside 25–30% of earnings for taxes</li>
+            <li>We provide detailed earnings statements and 1099 forms for tax filing</li>
+            <li>Vehicle expenses may be deductible — consult a tax professional familiar with gig work</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vehicle & Operations -->
+    <section class="faq-section" id="vehicle" aria-labelledby="vehicle-title">
+      <h2 class="faq-section-title" id="vehicle-title">Vehicle &amp; Operations</h2>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Do I need my own car to drive with mongoori?</h3>
+        <div class="faq-answer">
+          <p>No. mongoori provides all vehicles. Every driver gets access to a premium Tesla Model 3, Model Y, or Model S. No car payment, no insurance cost, no maintenance burden — that's all on us. You cannot use your own vehicle.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What if I get a flat tire or the car breaks down?</h3>
+        <div class="faq-answer">
+          <p>You're covered. Here's exactly what happens:</p>
+          <ul>
+            <li>Press the SOS button in your car (or contact support via the app)</li>
+            <li>Our team connects with you right away and coordinates roadside assistance or towing</li>
+            <li>For flat tires: our roadside team arrives within 15–30 minutes</li>
+            <li>For major breakdowns: a replacement Tesla arrives within 30–60 minutes</li>
+          </ul>
+          <p>You never pay for towing, repairs, roadside assistance, or vehicle replacement. That's our job.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What's the vehicle pickup and return process?</h3>
+        <div class="faq-answer">
+          <p><strong>Pickup:</strong> Your assigned Tesla's location is sent to your phone. Drive to the lot, complete a digital sign-off in the app, and you're set. Takes about 15 minutes on your first pickup.</p>
+          <p><strong>Return:</strong> Drive to our lot, park in the designated spot, and check the vehicle condition in the app. Earnings processing begins immediately.</p>
+          <p>Pickup hours: 6 AM–10 PM daily. After-hours pickups are available for verified drivers.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What if I return the vehicle late?</h3>
+        <div class="faq-answer">
+          <p>Late returns are charged at <strong>$75 per day</strong>. Please return the vehicle on time or contact support in advance if you need an extension — we'll do our best to accommodate you.</p>
+          <div class="info-box">To avoid late fees, use the in-app return scheduler and notify support at least 2 hours before your expected return time if plans change.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What's covered by insurance?</h3>
+        <div class="faq-answer">
+          <p>All mongoori Teslas are fully insured with $0 deductible for you:</p>
+          <ul>
+            <li>Collision damage (accidents with other vehicles or objects)</li>
+            <li>Liability (injuries to passengers or third parties)</li>
+            <li>Medical coverage (injuries in your vehicle)</li>
+            <li>Theft and vandalism</li>
+            <li>24/7 roadside assistance (towing, lockout, tire changes)</li>
+          </ul>
+          <p><strong>Not covered:</strong> Traffic violations, parking tickets, or damage from intentional or illegal activities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charging Your Tesla -->
+    <section class="faq-section" id="charging" aria-labelledby="charging-title">
+      <h2 class="faq-section-title" id="charging-title">Charging Your Tesla</h2>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Who pays for Supercharger sessions?</h3>
+        <div class="faq-answer">
+          <p>mongoori covers all standard charging costs when you use designated Tesla Superchargers on the approved list in your driver app. No out-of-pocket charging expenses for you during active shifts.</p>
+          <p>For reference, representative Supercharger rates in Southern California (e.g., Irvine area) run approximately <strong>$0.50/kWh</strong> at peak times, with off-peak rates as low as $0.40–$0.47/kWh. You don't need to track these costs — we handle it.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">How do I charge the Tesla during my shift?</h3>
+        <div class="faq-answer">
+          <p>Your driver app shows nearby approved Supercharger locations. Simply navigate there when the battery drops below 20%. The charge session is logged automatically through the vehicle — no payment action needed from you.</p>
+          <p>Tips for efficient charging:</p>
+          <ul>
+            <li>Charge during slow periods (mid-morning, early afternoon) to minimize earnings interruption</li>
+            <li>A 20-minute Supercharger session adds 100–150 miles of range</li>
+            <li>The app alerts you when battery is getting low</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support & Safety -->
+    <section class="faq-section" id="support" aria-labelledby="support-title">
+      <h2 class="faq-section-title" id="support-title">Support &amp; Safety</h2>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Is there driver support if I have issues?</h3>
+        <div class="faq-answer">
+          <p>Yes. 24/7 support is a core part of mongoori — real people, not automated responses.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Channel</th>
+                <th>Hours</th>
+                <th>Response Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>In-App Support</td>
+                <td>24/7</td>
+                <td>Immediate</td>
+              </tr>
+              <tr>
+                <td>Live Chat</td>
+                <td>24/7</td>
+                <td>2–3 minutes</td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td>24/7</td>
+                <td>&lt;5 minutes</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>All hours</td>
+                <td>&lt;1 hour</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Contact us at <a href="mailto:support@mongoori.com">support@mongoori.com</a> or use the in-app support chat for the fastest response.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What happens if I get in an accident?</h3>
+        <div class="faq-answer">
+          <ol>
+            <li><strong>Pull over safely</strong> — Get out of traffic if possible</li>
+            <li><strong>Contact support</strong> — Use the SOS button or in-app emergency feature</li>
+            <li><strong>Call 911 if needed</strong> — For injuries or major damage</li>
+            <li><strong>Take photos</strong> — Document damage to both vehicles and the scene</li>
+          </ol>
+          <p>mongoori's support team checks on you, coordinates towing, arranges a replacement Tesla, and handles all insurance claims. Your cost: $0.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">How does mongoori handle driver safety?</h3>
+        <div class="faq-answer">
+          <p>Safety is built into every vehicle and process:</p>
+          <ul>
+            <li><strong>Dual Cameras</strong> — Inside and outside, protecting you during disputes</li>
+            <li><strong>Emergency SOS Button</strong> — Direct connection to support</li>
+            <li><strong>Real-Time GPS</strong> — Your location always known by support</li>
+            <li><strong>Automatic Crash Detection</strong> — Alerts support instantly</li>
+            <li><strong>Passenger ID Verification</strong> — All riders must verify identity</li>
+            <li><strong>Driver Can Refuse</strong> — Cancel any ride without penalty</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What if a passenger makes a complaint?</h3>
+        <div class="faq-answer">
+          <p>mongoori investigates all complaints fairly. You'll be notified, given full details, and have the opportunity to respond with your account. Support reviews in-car camera footage and makes a decision within 24–48 hours. You can appeal any decision you disagree with.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scheduling & Flexibility -->
+    <section class="faq-section" id="scheduling" aria-labelledby="scheduling-title">
+      <h2 class="faq-section-title" id="scheduling-title">Scheduling &amp; Flexibility</h2>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Can I work whenever I want?</h3>
+        <div class="faq-answer">
+          <p>Yes, completely. No minimum hours, no shift requirements. Open the mongoori app, toggle "Available," and start accepting requests. Turn off anytime. Work 5 hours this week and 50 hours next — no questions asked.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Can I also drive for Uber, Lyft, or other platforms?</h3>
+        <div class="faq-answer">
+          <p>Yes. Many mongoori drivers work on multiple platforms. mongoori has no exclusivity clause — work where you want. Just coordinate your vehicle schedules and ensure insurance compliance for any non-mongoori vehicles.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Can I take time off?</h3>
+        <div class="faq-answer">
+          <p>Yes. No penalties, no approval needed. Stop accepting rides when you're done for the day, pause for a week, or take a month off. Your account stays active and you can return whenever you're ready — no re-qualification required.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location & Requirements -->
+    <section class="faq-section" id="location" aria-labelledby="location-title">
+      <h2 class="faq-section-title" id="location-title">Location &amp; Requirements</h2>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Where does mongoori operate?</h3>
+        <div class="faq-answer">
+          <p><strong>Live now:</strong></p>
+          <ul>
+            <li>Los Angeles (LA metro area)</li>
+            <li>Orange County (Irvine, Santa Ana, Costa Mesa, Newport Beach)</li>
+            <li>San Diego metro area</li>
+          </ul>
+          <p><strong>Coming soon (2026–2027):</strong> Inland Empire, Ventura County, San Francisco Bay Area</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Do I need a California driver's license?</h3>
+        <div class="faq-answer">
+          <p>Yes. A valid, current California driver's license is required — no major violations in the past 3 years, not suspended or revoked. If you recently moved to California, you'll need to obtain a CA license (typically 4–6 weeks through the DMV) before applying.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Do I need my own insurance?</h3>
+        <div class="faq-answer">
+          <p>No. mongoori's insurance covers you fully when driving a mongoori vehicle — liability, collision, medical payments, and comprehensive coverage. You do not need personal rideshare insurance for mongoori vehicles. If you drive other cars on other platforms, you'll need separate coverage for those.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Account & Technical -->
+    <section class="faq-section" id="account" aria-labelledby="account-title">
+      <h2 class="faq-section-title" id="account-title">Account &amp; Technical</h2>
+
+      <div class="faq-item">
+        <h3 class="faq-question">How do I reset my password or recover my account?</h3>
+        <div class="faq-answer">
+          <ol>
+            <li>Open the mongoori driver app</li>
+            <li>Tap "Forgot Password"</li>
+            <li>Enter your email or phone number</li>
+            <li>Follow the reset link sent to your email</li>
+          </ol>
+          <p>If you're locked out or need additional help, contact support via <a href="mailto:support@mongoori.com">support@mongoori.com</a> or in-app chat.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">I have a question not covered here. Who do I contact?</h3>
+        <div class="faq-answer">
+          <p>Reach us at <a href="mailto:support@mongoori.com">support@mongoori.com</a> or use the in-app support chat for the fastest response. Our team is available 24/7 and typically responds within minutes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <div class="cta-banner">
+      <h2>Ready to Drive?</h2>
+      <p>Apply in 5–10 minutes. Approval in 24–48 hours. Start earning the same week.</p>
+      <a href="https://rides.mongoori.com" class="button" target="_blank" rel="noopener noreferrer">Apply to Drive</a>
+    </div>
+
+  </main>
+
+  <footer role="contentinfo">
+    <p>
+      <a href="how-it-works.html">How It Works</a>
+      <span class="separator">|</span>
+      <a href="faq.html">Driver FAQ</a>
+      <span class="separator">|</span>
+      <a href="mailto:contact@mongoori.com">Contact Us</a>
+      <span class="separator">|</span>
+      &copy; 2026 mongoori LLC. All Rights Reserved.
+    </p>
+  </footer>
+</body>
+</html>
