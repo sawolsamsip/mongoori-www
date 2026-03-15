@@ -259,6 +259,87 @@
       line-height: 1.6;
     }
 
+    .social-proof-section {
+      background: linear-gradient(135deg, #e8f0fe 0%, #f0e8ff 100%);
+      border-radius: 12px;
+      padding: 40px 28px;
+      margin: 48px 0;
+    }
+    .social-proof-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8em;
+      margin: 0 0 10px;
+      color: var(--text-dark);
+      text-align: center;
+    }
+    .social-proof-intro {
+      text-align: center;
+      color: #555;
+      margin-bottom: 32px;
+      font-size: 1.05em;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 10px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-left: 4px solid var(--accent-color);
+    }
+    .testimonial-card .stars {
+      color: #ffd700;
+      font-size: 0.95em;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+    .testimonial-card .quote {
+      font-size: 0.95em;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .testimonial-card .author {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.95em;
+      margin-bottom: 4px;
+    }
+    .testimonial-card .role {
+      color: #888;
+      font-size: 0.85em;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .stat-box {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .stat-box .number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2em;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 8px;
+    }
+    .stat-box .label {
+      font-size: 0.9em;
+      color: #555;
+      line-height: 1.4;
+    }
+
     .vehicle-section, .safety-section {
       border-radius: 12px;
       padding: 28px 28px 20px;
@@ -405,6 +486,91 @@
       </div>
     </section>
 
+    <!-- How to Get Started with Your Tesla -->
+    <section class="steps-section" aria-labelledby="getstarted-title">
+      <h2 id="getstarted-title">How to Get Started with Your Tesla</h2>
+      <p>Once approved, here's the simple process to get your vehicle and start earning:</p>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">1</div>
+        <div class="step-content">
+          <h3>Browse Available Vehicles</h3>
+          <p>Log into the mongoori Driver Portal and explore available Tesla models near you:</p>
+          <ul>
+            <li>View all available vehicles in your service area (LA, Orange County, Irvine, San Diego)</li>
+            <li>Check vehicle specs, mileage, and condition</li>
+            <li>Compare pricing for different rental periods (monthly, quarterly, annual)</li>
+            <li>Read other drivers' reviews and ratings</li>
+          </ul>
+          <span class="timing">Time Required: 5–10 minutes</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">2</div>
+        <div class="step-content">
+          <h3>Submit Rental Application</h3>
+          <p>Select your vehicle and complete the rental agreement:</p>
+          <ul>
+            <li>Choose your rental period (1 month to annual lease)</li>
+            <li>Review and sign the rental agreement and insurance terms</li>
+            <li>Provide proof of valid driver's license and insurance</li>
+            <li>Choose your payment method (weekly, monthly, or upfront)</li>
+            <li>Agree to mongoori's driver code of conduct and maintenance standards</li>
+          </ul>
+          <span class="timing">Time Required: 10–15 minutes</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">3</div>
+        <div class="step-content">
+          <h3>Complete Vehicle Inspection &amp; Handoff</h3>
+          <p>Inspect and take possession of your Tesla:</p>
+          <ul>
+            <li>Schedule a pickup appointment at our service center or arrange delivery</li>
+            <li>Walk through vehicle condition check with mongoori staff (interior, exterior, battery, systems)</li>
+            <li>Document baseline mileage and take photos for your records</li>
+            <li>Receive vehicle keys, access codes, and charging credentials</li>
+            <li>Get setup help for the Tesla app and mongoori driver dashboard</li>
+          </ul>
+          <span class="timing">Time Required: 30–45 minutes</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">4</div>
+        <div class="step-content">
+          <h3>Start Driving with Uber/Lyft</h3>
+          <p>You're ready to begin your rideshare career:</p>
+          <ul>
+            <li>Ensure your Uber and Lyft driver accounts are activated and approved</li>
+            <li>Log into the mongoori Driver App on your Tesla's touchscreen or your phone</li>
+            <li>Verify your vehicle is connected and in good operating status</li>
+            <li>Toggle "Available" on your rideshare app and start accepting rides</li>
+            <li>Your first trip can happen immediately after vehicle handoff</li>
+          </ul>
+          <span class="timing">Time to First Ride: Same day as handoff</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number" aria-hidden="true">5</div>
+        <div class="step-content">
+          <h3>Weekly &amp; Monthly Renewal Process</h3>
+          <p>Maintain your rental and maximize your earnings:</p>
+          <ul>
+            <li>Weekly vehicle inspection — Check tire pressure, fluid levels, and condition before long driving days</li>
+            <li>Charging schedule — Plan charging during low-demand hours; mongoori covers first 100 kWh/month</li>
+            <li>Monthly check-in — Contact mongoori support for any maintenance or issues</li>
+            <li>Mileage tracking — Monitor your monthly allowance (unlimited standard miles included)</li>
+            <li>Renewal payments — Your rental fee renews weekly or monthly depending on your payment plan</li>
+          </ul>
+          <span class="timing">Frequency: Weekly &amp; monthly ongoing</span>
+        </div>
+      </div>
+    </section>
+
     <!-- Your Vehicle Section -->
     <section class="vehicle-section" aria-labelledby="vehicle-title">
       <h2 id="vehicle-title">Your Vehicle: Premium Tesla Experience</h2>
@@ -529,6 +695,72 @@
             <li>Track support ticket history</li>
             <li>Access FAQs and driver resources</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof & Testimonials -->
+    <section class="social-proof-section" aria-labelledby="proof-title">
+      <h2 id="proof-title">Join 2,000+ mongoori Drivers</h2>
+      <p class="social-proof-intro">Real drivers earning real income. Here's what they have to say:</p>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"I was driving for Uber with my own car and spending $600/month on gas and maintenance. With mongoori and a Tesla, my costs are nearly zero, and I earn 25% more per ride. Best decision I made this year."</p>
+          <div class="author">Marcus T.</div>
+          <div class="role">Full-time Uber/Lyft Driver, Los Angeles</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"The support is incredible. My first week, I had a minor accident and mongoori had me in a replacement Tesla within 3 hours. They handled everything with insurance — I just kept driving. Can't beat that peace of mind."</p>
+          <div class="author">Sarah D.</div>
+          <div class="role">Part-time Driver, Orange County</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Driving premium Teslas means my passengers are happier, my tips are higher, and I actually enjoy the work. mongoori made it possible for me to scale from one vehicle to managing multiple drivers on my team."</p>
+          <div class="author">James C.</div>
+          <div class="role">Rideshare Entrepreneur, San Diego</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"I switched from Uber's rental partnership to mongoori because the fees are lower and the vehicles are newer. My weekly earnings went up by $300-400. The app is intuitive and support is always helpful."</p>
+          <div class="author">David L.</div>
+          <div class="role">Full-time Driver, Irvine</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(74,144,226,0.2);">
+        <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.4em; margin: 0 0 20px; color: var(--text-dark);">The mongoori Advantage by the Numbers</h3>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="number">2,000+</div>
+            <div class="label">Active Drivers</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">$1,500+</div>
+            <div class="label">Average Weekly Earnings</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">4.9★</div>
+            <div class="label">Average Driver Rating</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">25–30%</div>
+            <div class="label">Higher Pay vs. Competitors</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">Unlimited</div>
+            <div class="label">Included Mileage</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">24/7</div>
+            <div class="label">Premium Support</div>
+          </div>
         </div>
       </div>
     </section>
