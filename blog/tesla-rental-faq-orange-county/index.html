@@ -105,6 +105,16 @@
     .cta-box p { color: #ccc; margin-bottom: 20px; }
     .cta-box .button { background: #4A90E2; color: #fff; }
     .cta-box .button:hover { background: #357abd; }
+    .blog-header .post-tag { display: inline-block; background: #4A90E2; color: #fff; font-size: 0.75em; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
+    .related-posts { max-width: 860px; margin: 0 auto 64px; padding: 0 20px; }
+    .related-posts h2 { font-family: 'Montserrat', sans-serif; font-size: 1.3em; font-weight: 700; color: #1a1a1a; margin-bottom: 24px; text-align: center; }
+    .related-posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .related-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); padding: 24px; }
+    .related-card .post-tag { display: inline-block; background: #4A90E2; color: #fff; font-size: 0.7em; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 10px; }
+    .related-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1em; font-weight: 700; color: #1a1a1a; margin: 0 0 10px; line-height: 1.4; }
+    .related-card h3 a { color: #1a1a1a; text-decoration: none; }
+    .related-card h3 a:hover { color: #4A90E2; }
+    .related-card .read-more { color: #4A90E2; font-weight: 700; font-size: 0.85em; text-decoration: none; }
     .blog-nav { max-width: 760px; margin: 0 auto 40px; padding: 0 20px; display: flex; justify-content: space-between; font-size: 0.9em; }
     .blog-nav a { color: #4A90E2; text-decoration: none; }
     .blog-nav a:hover { text-decoration: underline; }
@@ -112,6 +122,11 @@
       .blog-header h1 { font-size: 1.6em; }
       .blog-article h2 { font-size: 1.25em; }
       .blog-article table { font-size: 0.82em; }
+      .related-posts-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 375px) {
+      .blog-header { padding: 40px 16px; }
+      .blog-article { padding: 0 16px; }
     }
   </style>
 </head>
@@ -119,8 +134,9 @@
 <body>
   <header class="blog-header" role="banner">
     <p class="breadcrumb"><a href="/">mongoori</a> &rsaquo; <a href="/blog/">Blog</a></p>
+    <span class="post-tag">FAQ</span>
     <h1>Tesla EV Rental FAQ for Rideshare Drivers in Orange County</h1>
-    <p class="post-meta">March 15, 2026 &nbsp;·&nbsp; 6 min read &nbsp;·&nbsp; FAQ</p>
+    <p class="post-meta">March 15, 2026 &nbsp;·&nbsp; 6 min read</p>
   </header>
 
   <article class="blog-article" role="main">
@@ -212,6 +228,27 @@
     <p style="text-align:center; color: #888;"><strong>Questions?</strong> Call us at <a href="tel:+19493853271">+1-949-385-3271</a> or visit <a href="https://www.mongoori.com">mongoori.com</a></p>
 
   </article>
+
+  <section class="related-posts" aria-label="Related articles">
+    <h2>Related Articles</h2>
+    <div class="related-posts-grid">
+      <div class="related-card">
+        <span class="post-tag">Earnings Guide</span>
+        <h3><a href="/blog/rideshare-driver-earnings-irvine-tesla/">How Much Can You Earn as a Rideshare Driver in Irvine with a Tesla?</a></h3>
+        <a href="/blog/rideshare-driver-earnings-irvine-tesla/" class="read-more">Read More &rarr;</a>
+      </div>
+      <div class="related-card">
+        <span class="post-tag">Driver Guide</span>
+        <h3><a href="/blog/tesla-best-car-uber-lyft-drivers/">Why Tesla is the Best Car for Uber/Lyft Drivers in Southern California</a></h3>
+        <a href="/blog/tesla-best-car-uber-lyft-drivers/" class="read-more">Read More &rarr;</a>
+      </div>
+      <div class="related-card">
+        <span class="post-tag">Host Guide</span>
+        <h3><a href="/blog/host-guide-rent-out-tesla-irvine/">How to Rent Out Your Tesla in Irvine: A Complete Host Guide for 2026</a></h3>
+        <a href="/blog/host-guide-rent-out-tesla-irvine/" class="read-more">Read More &rarr;</a>
+      </div>
+    </div>
+  </section>
 
   <nav class="blog-nav" aria-label="Blog navigation">
     <a href="/blog/tesla-best-car-uber-lyft-drivers/">&larr; Previous: Why Tesla is Best</a>
