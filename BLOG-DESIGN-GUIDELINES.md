@@ -1,18 +1,26 @@
 # Blog Page Design Guidelines — mongoori-www
-**Version:** 1.0 | **Date:** 2026-03-16 | **Author:** UX/UI Designer (MON-720)
-**For:** Frontend Engineer (MON-707) — SEO Blog 4-Post Deployment
+**Version:** 2.0 | **Date:** 2026-03-16 | **Author:** UX/UI Designer (MON-860)
+**For:** Frontend Engineer — SEO Blog Section (12 Posts + Category Filter)
 
 ---
 
 ## Overview
 
-This document provides design specifications for implementing the 4 SEO blog posts on `mongoori-www`. The blog lives on the **static HTML/CSS site** (`mongoori-www`), NOT the React app (`mongoori-rides`). All implementations must reference `style.css` and the existing `blog/index.html` patterns.
+This document provides design specifications for the `mongoori-www` blog section. The blog lives on the **static HTML/CSS site** (`mongoori-www`), NOT the React app (`mongoori-rides`). All implementations must reference `style.css` and the existing `blog/index.html` patterns.
 
-**4 Blog Posts to Deploy:**
+**12 Blog Posts (as of MON-860):**
 1. `How Much Can You Earn as a Rideshare Driver in Irvine with a Tesla?` → `/blog/rideshare-driver-earnings-irvine-tesla/`
 2. `Why Tesla is the Best Car for Uber/Lyft Drivers in Southern California` → `/blog/tesla-best-car-uber-lyft-drivers/`
 3. `Tesla EV Rental FAQ for Rideshare Drivers in Orange County` → `/blog/tesla-rental-faq-orange-county/`
 4. `How to Rent Out Your Tesla in Irvine: A Complete Host Guide for 2026` → `/blog/host-guide-rent-out-tesla-irvine/`
+5. `California EV Incentives for Rideshare Drivers in Irvine 2026` → `/blog/california-ev-incentives-rideshare-irvine-2026/`
+6. `Tesla Maintenance Guide for Rideshare Drivers — Save $3,000+ Per Year` → `/blog/tesla-maintenance-guide-rideshare-drivers-save-money/`
+7. `How Much Does It Cost to Drive Rideshare in Irvine? (Complete 2026 Guide)` → `/blog/rideshare-costs-guide-irvine/`
+8. `Tesla Model 3 vs Model Y for Rideshare: Which Is Best for Irvine Drivers in 2026?` → `/blog/tesla-model-3-vs-y-rideshare/`
+9. `How to Qualify for Tesla Rental in Irvine: Complete 2026 Requirements Guide` → `/blog/how-to-qualify-tesla-rental-irvine/`
+10. `Tesla vs Gas Car: Total Cost Comparison for Rideshare Drivers in 2026` → `/blog/tesla-vs-gas-car-rideshare-cost-comparison/`
+11. `How to Qualify for Rideshare Insurance in California` → `/blog/rideshare-insurance-california/`
+12. `Tesla vs Prius for Uber: Which Is More Profitable in 2026?` → `/blog/tesla-vs-prius-uber-profitability-2026/`
 
 ---
 
@@ -63,11 +71,9 @@ background: #4A90E2; color: #fff;
 
 ## 2. Blog Listing Page (`/blog/index.html`)
 
-> ✅ **Already deployed.** Do not modify the listing page unless a new post card needs to be added.
-
-**Pattern for adding a new card:**
+**Pattern for adding a new card** (always include `data-category`):
 ```html
-<article class="blog-card">
+<article class="blog-card" data-category="[category-key]">
   <span class="post-tag">Tag Label</span>
   <h2><a href="/blog/post-slug/">Post Title Here</a></h2>
   <p class="post-meta">March 15, 2026 &nbsp;·&nbsp; 5 min read</p>
@@ -76,13 +82,131 @@ background: #4A90E2; color: #fff;
 </article>
 ```
 
-**Tag categories (use exactly):**
+**`data-category` values and their filter mapping:**
+
+| `data-category` | Filter Button | Tags That Use It |
+|---|---|---|
+| `driver` | Driver Guides | Driver Guide, FAQ, Requirements Guide |
+| `cost` | Cost & Earnings | Earnings Guide, Cost Guide, Comparison Guide, Cost Analysis |
+| `ev` | EV & Maintenance | EV Guide, Maintenance Guide |
+| `insurance` | Insurance | Insurance Guide |
+| `host` | For Hosts | Host Guide |
+
+**Tag categories (visual display — use exactly):**
 - `Earnings Guide` → blue `#4A90E2`
 - `Driver Guide` → blue `#4A90E2`
 - `FAQ` → blue `#4A90E2`
 - `Host Guide` → blue `#4A90E2`
+- `EV Guide` → blue `#4A90E2`
+- `Maintenance Guide` → blue `#4A90E2`
+- `Cost Guide` → blue `#4A90E2`
+- `Comparison Guide` → blue `#4A90E2`
+- `Requirements Guide` → blue `#4A90E2`
+- `Cost Analysis` → blue `#4A90E2`
+- `Insurance Guide` → blue `#4A90E2`
 
 > All tags use the same `#4A90E2` background. No variant styling needed.
+
+### 2.1 Category Filter Bar
+
+The filter bar sits between the hero and the blog listing. It is a horizontally scrollable pill-button nav (no page reload — JavaScript filter only).
+
+```html
+<nav class="filter-bar" aria-label="Filter blog posts by category">
+  <button class="filter-btn active" data-filter="all">All <span class="filter-count">12</span></button>
+  <button class="filter-btn" data-filter="driver">Driver Guides</button>
+  <button class="filter-btn" data-filter="cost">Cost &amp; Earnings</button>
+  <button class="filter-btn" data-filter="ev">EV &amp; Maintenance</button>
+  <button class="filter-btn" data-filter="insurance">Insurance</button>
+  <button class="filter-btn" data-filter="host">For Hosts</button>
+</nav>
+```
+
+**Filter bar CSS (add to `<style>` block in `blog/index.html`):**
+```css
+.filter-bar {
+  max-width: 860px;
+  margin: 32px auto 0;
+  padding: 0 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+.filter-btn {
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.82em;
+  font-weight: 700;
+  color: #555;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  padding: 7px 18px;
+  margin-right: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: #4A90E2;
+  color: #fff;
+  border-color: #4A90E2;
+}
+.filter-count {
+  font-size: 0.8em;
+  opacity: 0.75;
+  margin-left: 4px;
+}
+.blog-card.hidden { display: none; }
+.no-results {
+  text-align: center;
+  color: #888;
+  padding: 48px 0;
+  display: none;
+}
+```
+
+**Filter JavaScript (add before `</main>`):**
+```html
+<p class="no-results" id="no-results">No posts in this category yet.</p>
+
+<script>
+  (function () {
+    var btns = document.querySelectorAll('.filter-btn');
+    var cards = document.querySelectorAll('.blog-card');
+    var noResults = document.getElementById('no-results');
+
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = this.getAttribute('data-filter');
+        btns.forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        var visible = 0;
+        cards.forEach(function (card) {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.classList.remove('hidden');
+            visible++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+        noResults.style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+  })();
+</script>
+```
+
+**Mobile behavior:**
+- Filter bar scrolls horizontally on mobile (hidden scrollbar, touch-friendly)
+- Active filter pill: `#4A90E2` background, white text
+- Default active: "All" button on page load
+- Update the `All` button count when new posts are added
 
 ---
 
@@ -671,7 +795,36 @@ Each post should show 3 related posts (never link to itself):
 | Post 2 (Best Car) | Post 1, Post 3, Post 4 |
 | Post 3 (FAQ) | Post 1, Post 2, Post 4 |
 | Post 4 (Host Guide) | Post 1, Post 2, Post 3 |
+| Post 5 (EV Incentives) | Post 6, Post 7, Post 1 |
+| Post 6 (Maintenance) | Post 5, Post 7, Post 1 |
+| Post 7 (Rideshare Costs) | Post 1, Post 10, Post 8 |
+| Post 8 (Model 3 vs Y) | Post 7, Post 10, Post 1 |
+| Post 9 (Qualify Rental) | Post 11, Post 3, Post 1 |
+| Post 10 (Tesla vs Gas) | Post 7, Post 1, Post 8 |
+| Post 11 (Insurance) | Post 9, Post 3, Post 1 |
+| Post 12 (Tesla vs Prius) | Post 10, Post 1, Post 8 |
+
+## 12. Post Tags → Filter Category Mapping
+
+When adding new posts, assign `data-category` based on this mapping table:
+
+| Post Tag | `data-category` |
+|---|---|
+| Earnings Guide | `cost` |
+| Driver Guide | `driver` |
+| FAQ | `driver` |
+| Host Guide | `host` |
+| EV Guide | `ev` |
+| Maintenance Guide | `ev` |
+| Cost Guide | `cost` |
+| Comparison Guide | `cost` |
+| Requirements Guide | `driver` |
+| Cost Analysis | `cost` |
+| Insurance Guide | `insurance` |
+
+> Update the "All" filter count badge in `blog/index.html` whenever a new post card is added.
 
 ---
 
 *Document maintained by UX/UI Designer. Questions → Product Manager.*
+*v2.0 updated 2026-03-16 (MON-860): Added category filter system, posts #11-12 specs, full post index.*

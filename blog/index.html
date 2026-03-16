@@ -53,9 +53,50 @@
       font-size: 1.1em;
       margin: 0;
     }
+
+    /* Category Filter Bar */
+    .filter-bar {
+      max-width: 860px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      display: inline-block;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.82em;
+      font-weight: 700;
+      color: #555;
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      padding: 7px 18px;
+      margin-right: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #4A90E2;
+      color: #fff;
+      border-color: #4A90E2;
+    }
+    .filter-count {
+      font-size: 0.8em;
+      opacity: 0.75;
+      margin-left: 4px;
+    }
+
     .blog-listing {
       max-width: 860px;
-      margin: 40px auto;
+      margin: 24px auto 40px;
       padding: 0 20px;
     }
     .blog-card {
@@ -71,6 +112,7 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.14);
       transform: translateY(-3px);
     }
+    .blog-card.hidden { display: none; }
     .blog-card .post-tag {
       display: inline-block;
       background: #4A90E2;
@@ -119,9 +161,20 @@
       background: #4A90E2;
       color: #fff;
     }
+    .no-results {
+      text-align: center;
+      color: #888;
+      padding: 48px 0;
+      display: none;
+      font-size: 1em;
+    }
     @media (max-width: 768px) {
       .blog-hero h1 { font-size: 2em; }
       .blog-card { padding: 22px; }
+      .filter-bar { margin-top: 24px; }
+    }
+    @media (max-width: 375px) {
+      .filter-btn { padding: 6px 14px; font-size: 0.78em; }
     }
   </style>
 </head>
@@ -133,9 +186,19 @@
     <p>Tesla rideshare tips, earnings guides &amp; rental FAQs for SoCal drivers</p>
   </header>
 
+  <!-- Category Filter Bar -->
+  <nav class="filter-bar" aria-label="Filter blog posts by category">
+    <button class="filter-btn active" data-filter="all">All <span class="filter-count">12</span></button>
+    <button class="filter-btn" data-filter="driver">Driver Guides</button>
+    <button class="filter-btn" data-filter="cost">Cost &amp; Earnings</button>
+    <button class="filter-btn" data-filter="ev">EV &amp; Maintenance</button>
+    <button class="filter-btn" data-filter="insurance">Insurance</button>
+    <button class="filter-btn" data-filter="host">For Hosts</button>
+  </nav>
+
   <main class="blog-listing" role="main">
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="cost">
       <span class="post-tag">Earnings Guide</span>
       <h2><a href="/blog/rideshare-driver-earnings-irvine-tesla/">How Much Can You Earn as a Rideshare Driver in Irvine with a Tesla?</a></h2>
       <p class="post-meta">March 15, 2026 &nbsp;·&nbsp; 5 min read</p>
@@ -143,7 +206,7 @@
       <a href="/blog/rideshare-driver-earnings-irvine-tesla/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="driver">
       <span class="post-tag">Driver Guide</span>
       <h2><a href="/blog/tesla-best-car-uber-lyft-drivers/">Why Tesla is the Best Car for Uber/Lyft Drivers in Southern California</a></h2>
       <p class="post-meta">March 15, 2026 &nbsp;·&nbsp; 6 min read</p>
@@ -151,7 +214,7 @@
       <a href="/blog/tesla-best-car-uber-lyft-drivers/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="driver">
       <span class="post-tag">FAQ</span>
       <h2><a href="/blog/tesla-rental-faq-orange-county/">Tesla EV Rental FAQ for Rideshare Drivers in Orange County</a></h2>
       <p class="post-meta">March 15, 2026 &nbsp;·&nbsp; 6 min read</p>
@@ -159,7 +222,7 @@
       <a href="/blog/tesla-rental-faq-orange-county/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="host">
       <span class="post-tag">Host Guide</span>
       <h2><a href="/blog/host-guide-rent-out-tesla-irvine/">How to Rent Out Your Tesla in Irvine: A Complete Host Guide for 2026</a></h2>
       <p class="post-meta">March 15, 2026 &nbsp;·&nbsp; 7 min read</p>
@@ -167,7 +230,7 @@
       <a href="/blog/host-guide-rent-out-tesla-irvine/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="ev">
       <span class="post-tag">EV Guide</span>
       <h2><a href="/blog/california-ev-incentives-rideshare-irvine-2026/">California EV Incentives for Rideshare Drivers in Irvine 2026</a></h2>
       <p class="post-meta">March 16, 2026 &nbsp;·&nbsp; 8 min read</p>
@@ -175,7 +238,7 @@
       <a href="/blog/california-ev-incentives-rideshare-irvine-2026/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="ev">
       <span class="post-tag">Maintenance Guide</span>
       <h2><a href="/blog/tesla-maintenance-guide-rideshare-drivers-save-money/">Tesla Maintenance Guide for Rideshare Drivers — Save $3,000+ Per Year</a></h2>
       <p class="post-meta">March 16, 2026 &nbsp;·&nbsp; 7 min read</p>
@@ -183,7 +246,7 @@
       <a href="/blog/tesla-maintenance-guide-rideshare-drivers-save-money/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="cost">
       <span class="post-tag">Cost Guide</span>
       <h2><a href="/blog/rideshare-costs-guide-irvine/">How Much Does It Cost to Drive Rideshare in Irvine? (Complete 2026 Guide)</a></h2>
       <p class="post-meta">March 16, 2026 &nbsp;·&nbsp; 7 min read</p>
@@ -191,7 +254,7 @@
       <a href="/blog/rideshare-costs-guide-irvine/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="cost">
       <span class="post-tag">Comparison Guide</span>
       <h2><a href="/blog/tesla-model-3-vs-y-rideshare/">Tesla Model 3 vs Model Y for Rideshare: Which Is Best for Irvine Drivers in 2026?</a></h2>
       <p class="post-meta">March 16, 2026 &nbsp;·&nbsp; 8 min read</p>
@@ -199,7 +262,7 @@
       <a href="/blog/tesla-model-3-vs-y-rideshare/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="driver">
       <span class="post-tag">Requirements Guide</span>
       <h2><a href="/blog/how-to-qualify-tesla-rental-irvine/">How to Qualify for Tesla Rental in Irvine: Complete 2026 Requirements Guide</a></h2>
       <p class="post-meta">March 16, 2026 &nbsp;·&nbsp; 7 min read</p>
@@ -207,7 +270,7 @@
       <a href="/blog/how-to-qualify-tesla-rental-irvine/" class="read-more">Read More &rarr;</a>
     </article>
 
-    <article class="blog-card">
+    <article class="blog-card" data-category="cost">
       <span class="post-tag">Cost Analysis</span>
       <h2><a href="/blog/tesla-vs-gas-car-rideshare-cost-comparison/">Tesla vs Gas Car: Total Cost Comparison for Rideshare Drivers in 2026</a></h2>
       <p class="post-meta">March 16, 2026 &nbsp;·&nbsp; 8 min read</p>
@@ -215,7 +278,114 @@
       <a href="/blog/tesla-vs-gas-car-rideshare-cost-comparison/" class="read-more">Read More &rarr;</a>
     </article>
 
+    <article class="blog-card" data-category="insurance">
+      <span class="post-tag">Insurance Guide</span>
+      <h2><a href="/blog/rideshare-insurance-california/">How to Qualify for Rideshare Insurance in California</a></h2>
+      <p class="post-meta">March 16, 2026 &nbsp;·&nbsp; 6 min read</p>
+      <p>California rideshare drivers face a coverage gap between personal auto insurance and Uber/Lyft's commercial policy. Learn what rideshare insurance is, which carriers offer it in CA, and how Mongoori renters are fully covered from day one.</p>
+      <a href="/blog/rideshare-insurance-california/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    <article class="blog-card" data-category="cost">
+      <span class="post-tag">Comparison Guide</span>
+      <h2><a href="/blog/tesla-vs-prius-uber-profitability-2026/">Tesla vs Prius for Uber: Which Is More Profitable in 2026?</a></h2>
+      <p class="post-meta">March 16, 2026 &nbsp;·&nbsp; 7 min read</p>
+      <p>Tesla vs Prius — the classic rideshare debate. We run the real 2026 numbers: fuel costs, platform tier access, maintenance, and annual net profit. See why Irvine's top-earning drivers are switching to Tesla and how mongoori makes it affordable.</p>
+      <a href="/blog/tesla-vs-prius-uber-profitability-2026/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    
+    <article class="blog-card" data-category="cost">
+      <span class="post-tag">Earnings Guide</span>
+      <h2><a href="/blog/daily-earnings-breakdown-tesla-rideshare/">Daily Earnings Breakdown: How Much Can You Make with a Tesla in SoCal Rideshare?</a></h2>
+      <p class="post-meta">March 15, 2026 &nbsp;&middot;&nbsp; 9 min read</p>
+      <p>Real earnings data from SoCal rideshare drivers using Tesla vehicles. Breakdown of hourly rates, trip patterns, incentives, and profitability by time of day and location.</p>
+      <a href="/blog/daily-earnings-breakdown-tesla-rideshare/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    <article class="blog-card" data-category="ev">
+      <span class="post-tag">EV Guide</span>
+      <h2><a href="/blog/ev-charging-guide-rideshare-irvine-orange-county/">EV Charging Guide for Rideshare Drivers in Irvine &amp; Orange County 2026</a></h2>
+      <p class="post-meta">March 15, 2026 &nbsp;&middot;&nbsp; 12 min read</p>
+      <p>Complete guide to charging your Tesla and electric vehicles for rideshare work in Irvine and Orange County. Find charging stations, optimize charging strategy, and manage costs.</p>
+      <a href="/blog/ev-charging-guide-rideshare-irvine-orange-county/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    <article class="blog-card" data-category="driver">
+      <span class="post-tag">Earnings Guide</span>
+      <h2><a href="/blog/maximize-uber-earnings-tesla-socal/">How to Maximize Uber Earnings with a Tesla Rental in Southern California</a></h2>
+      <p class="post-meta">March 15, 2026 &nbsp;&middot;&nbsp; 10 min read</p>
+      <p>Learn proven strategies to maximize Uber earnings with a Tesla rental in Southern California. Complete guide to pricing optimization, surge tracking, market selection, and profitability benchmarks.</p>
+      <a href="/blog/maximize-uber-earnings-tesla-socal/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    <article class="blog-card" data-category="insurance">
+      <span class="post-tag">Insurance Guide</span>
+      <h2><a href="/blog/rideshare-insurance-california-requirements/">How to Qualify for Rideshare Insurance in California: Step-by-Step Guide</a></h2>
+      <p class="post-meta">March 15, 2026 &nbsp;&middot;&nbsp; 8 min read</p>
+      <p>Learn the essential requirements and steps to qualify for rideshare insurance in California. Get protection for your vehicle, passengers, and income as a rideshare driver.</p>
+      <a href="/blog/rideshare-insurance-california-requirements/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    <article class="blog-card" data-category="driver">
+      <span class="post-tag">Driver Guide</span>
+      <h2><a href="/blog/tesla-model-y-rideshare-range/">Tesla Model Y Long-Range for Rideshare: Real-World Range Review</a></h2>
+      <p class="post-meta">March 15, 2026 &nbsp;&middot;&nbsp; 7 min read</p>
+      <p>Discover how the Tesla Model Y long-range performs for rideshare drivers. Real-world range analysis, charging optimization, and profitability insights for California TNC drivers.</p>
+      <a href="/blog/tesla-model-y-rideshare-range/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    <article class="blog-card" data-category="cost">
+      <span class="post-tag">Cost Analysis</span>
+      <h2><a href="/blog/tesla-vs-gas-rideshare-income-comparison-socal/">Tesla vs Gas Car for Rideshare: Real Income Comparison for SoCal Drivers 2026</a></h2>
+      <p class="post-meta">March 15, 2026 &nbsp;&middot;&nbsp; 15 min read</p>
+      <p>Detailed income comparison between Tesla and gas vehicles for rideshare drivers in Southern California. Calculate actual profits, fuel costs, maintenance, and earnings potential.</p>
+      <a href="/blog/tesla-vs-gas-rideshare-income-comparison-socal/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    <article class="blog-card" data-category="cost">
+      <span class="post-tag">Comparison Guide</span>
+      <h2><a href="/blog/tesla-vs-prius-rideshare-profitability/">Tesla vs Prius for Uber: Which is More Profitable in 2026?</a></h2>
+      <p class="post-meta">March 15, 2026 &nbsp;&middot;&nbsp; 10 min read</p>
+      <p>Compare Tesla vs Prius for rideshare driving. Analyze real fuel costs, maintenance, depreciation, and profitability to determine the best choice for 2026 rideshare drivers.</p>
+      <a href="/blog/tesla-vs-prius-rideshare-profitability/" class="read-more">Read More &rarr;</a>
+    </article>
+
+    <p class="no-results" id="no-results">No posts in this category yet. <a href="/blog/" onclick="document.querySelector('[data-filter=all]').click(); return false;">View all posts</a></p>
+
   </main>
+
+  <script>
+    (function () {
+      var btns = document.querySelectorAll('.filter-btn');
+      var cards = document.querySelectorAll('.blog-card');
+      var noResults = document.getElementById('no-results');
+
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = this.getAttribute('data-filter');
+
+          // Update active button
+          btns.forEach(function (b) { b.classList.remove('active'); });
+          this.classList.add('active');
+
+          // Show/hide cards
+          var visible = 0;
+          cards.forEach(function (card) {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.classList.remove('hidden');
+              visible++;
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+
+          // No results message
+          noResults.style.display = visible === 0 ? 'block' : 'none';
+        });
+      });
+    })();
+  </script>
 
   <footer role="contentinfo">
     <p>
