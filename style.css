@@ -83,12 +83,6 @@ body {
     url('images/rides-bg.jpg');
 }
 
-#host {
-  background-image:
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url('images/host-bg.jpg');
-}
-
 #stream {
   background-image:
     linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
