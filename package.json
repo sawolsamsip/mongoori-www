@@ -4,8 +4,12 @@
   "description": "mongoori Rides static website with automated blog build pipeline",
   "type": "module",
   "scripts": {
+    "start": "serve -l ${PORT:-3173} .",
     "build:blog": "node scripts/build-blog.mjs",
     "watch:blog": "node scripts/build-blog.mjs --watch"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
   },
   "devDependencies": {
     "gray-matter": "^4.0.3",
