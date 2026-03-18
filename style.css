@@ -159,20 +159,6 @@ footer p {
   margin: 0;
 }
 
-footer a {
-  color: #aaa;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: var(--text-light);
-}
-
-.separator {
-  margin: 0 10px;
-  color: #555;
-}
 
 @media (max-width: 768px) {
   .hero h1 { font-size: 2.5em; }
