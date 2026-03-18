@@ -74,7 +74,7 @@ body {
 #finds {
   background-image:
     linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url('images/finds-bg.jpg');
+    url('images/finds-bg.avif');
 }
 
 #rides {
