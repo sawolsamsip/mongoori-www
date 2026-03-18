@@ -1,9 +1,11 @@
 {
+  "rewrites": [
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works.html" }
+  ],
   "redirects": [
     { "source": "/host", "destination": "/#host" },
     { "source": "/driver", "destination": "/#driver" },
-    { "source": "/about", "destination": "/#about" },
-    { "source": "/faq", "destination": "/faq.html" },
-    { "source": "/how-it-works", "destination": "/how-it-works.html" }
+    { "source": "/about", "destination": "/#about" }
   ]
 }
