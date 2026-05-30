@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mongoori Agents — Operating System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D0D0D; --bg2: #111111; --bg3: #161616;
+  --border: rgba(255,255,255,.08);
+  --text: #F5F5F5; --muted: #6B7280;
+  --accent: #3B82F6; --accent-soft: #3B82F626; --accent-glow: #3B82F640;
+  --mono: 'JetBrains Mono', monospace; --sans: 'Inter', sans-serif;
+  --radius: 12px;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+
+/* Nav */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(13,13,13,.85); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  height: 60px; display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand-mark {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 14px; font-weight: 600; color: #fff;
+}
+.brand-name { font-size: 15px; letter-spacing: -.01em; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { font-size: 14px; color: var(--muted); transition: color .15s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-back {
+  font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px;
+  transition: color .15s;
+}
+.nav-back:hover { color: var(--text); }
+
+/* Hero */
+.hero {
+  padding: 120px 24px 72px; max-width: 1100px; margin: 0 auto;
+  position: relative;
+}
+.hero-bg {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
+}
+.hero-glow {
+  position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+}
+.eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; font-family: var(--mono); color: var(--accent);
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: 20px;
+}
+.eyebrow-line { width: 28px; height: 1px; background: var(--accent); flex-shrink: 0; }
+.hero-title {
+  font-size: clamp(36px,5vw,60px); font-weight: 700;
+  letter-spacing: -.03em; line-height: 1.1; margin-bottom: 16px;
+}
+.hero-grad {
+  background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub { font-size: 17px; color: var(--muted); max-width: 520px; margin-bottom: 36px; line-height: 1.7; }
+.hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.hero-stat { display: flex; flex-direction: column; gap: 2px; }
+.hero-stat-k { font-size: 24px; font-weight: 700; font-family: var(--mono); }
+.hero-stat-v { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+/* Team sections */
+.teams { max-width: 1100px; margin: 0 auto; padding: 0 24px 96px; display: flex; flex-direction: column; gap: 64px; }
+
+.team-section {}
+.team-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+}
+.team-label-text {
+  font-size: 11px; font-family: var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: .1em;
+}
+.team-label-line { flex: 1; height: 1px; background: var(--border); }
+.team-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+.team-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.team-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+/* Agent Card */
+.agent-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: border-color .2s, background .2s;
+  cursor: pointer;
+}
+.agent-card:hover { border-color: rgba(59,130,246,.25); background: var(--bg3); }
+.agent-card.open { border-color: rgba(59,130,246,.3); }
+
+.agent-card-top {
+  padding: 20px 20px 16px;
+}
+.agent-head {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+}
+.agent-badge {
+  font-size: 10px; font-family: var(--mono); font-weight: 600; letter-spacing: .06em;
+  background: var(--accent-soft); border: 1px solid rgba(59,130,246,.25);
+  color: var(--accent); border-radius: 5px; padding: 3px 8px;
+}
+.agent-pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #22c55e; box-shadow: 0 0 6px #22c55e80;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+.agent-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.agent-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.agent-foot {
+  padding: 10px 20px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--border);
+}
+.agent-reports {
+  font-size: 11px; font-family: var(--mono); color: var(--muted);
+}
+.agent-expand {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--muted);
+}
+.expand-arrow {
+  transition: transform .2s;
+}
+.agent-card.open .expand-arrow { transform: rotate(90deg); }
+
+/* Skills panel */
+.agent-skills {
+  display: none; padding: 0 20px 16px; border-top: 1px solid var(--border);
+}
+.agent-card.open .agent-skills { display: block; }
+.skill-group { margin-top: 14px; }
+.skill-group-label {
+  font-size: 10px; font-family: var(--mono); color: var(--muted);
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px;
+}
+.skill-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.skill-chip {
+  font-size: 11px; color: #D1D5DB;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 5px; padding: 3px 8px;
+}
+
+/* Org line hints */
+.reports-badge {
+  font-size: 10px; font-family: var(--mono);
+  color: var(--muted); background: var(--bg3);
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: 2px 6px;
+}
+
+@media (max-width: 900px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .team-grid, .team-grid.cols-3, .team-grid.cols-2 { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">m</span>
+      <span class="brand-name"><strong>mongoori</strong></span>
+    </a>
+    <nav class="nav-links">
+      <a href="/#portfolio">Portfolio</a>
+      <a href="/#about">About</a>
+      <a href="/agents" class="active">Agents</a>
+    </nav>
+  </div>
+</header>
+
+<div style="position:relative; overflow:hidden;">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+  </div>
+  <div class="hero">
+    <div class="eyebrow"><span class="eyebrow-line"></span><span>The Operating System</span></div>
+    <h1 class="hero-title">19 Agents.<br/><span class="hero-grad">One Company.</span></h1>
+    <p class="hero-sub">Every function — finance, engineering, ops, legal — is staffed by a specialized AI agent running 24/7 on Mongoori infrastructure.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-k" id="total-agents">19</span><span class="hero-stat-v">Agents</span></div>
+      <div class="hero-stat"><span class="hero-stat-k" id="total-skills">—</span><span class="hero-stat-v">Skills</span></div>
+      <div class="hero-stat"><span class="hero-stat-k">24/7</span><span class="hero-stat-v">Operations</span></div>
+      <div class="hero-stat"><span class="hero-stat-k">3</span><span class="hero-stat-v">Servers</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="teams" id="teams"></div>
+
+<script>
+const AGENTS = {
+  exec: {
+    label: "Executive",
+    agents: [
+      {
+        id: "CEO", name: "Strategy & Vision",
+        desc: "Final decision-maker across all 12 ventures. Sets priorities, allocates resources, delegates every task to sub-agents via Paperclip.",
+        reportsTo: null,
+        groups: [
+          { label: "Mongoori Operations", skills: ["CEO Daily Summary","Daily Briefing","Ops Weekly Report","CEO Summary","Personal Calendar"] },
+          { label: "Research", skills: ["ArXiv Search","Blog Watcher","LLM Wiki","Polymarket Research","Research Paper Writing"] },
+          { label: "Productivity", skills: ["Google Workspace","Notion","Airtable","Linear","Maps","PowerPoint","Nano PDF","OCR & Documents"] },
+          { label: "Communication", skills: ["Apple Notes","Apple Reminders","iMessage","Obsidian"] },
+          { label: "Creative & Social", skills: ["Creative Ideation","Social Media (X)"] }
+        ]
+      },
+      {
+        id: "CFO", name: "Finance & Capital",
+        desc: "Financial oversight — Stripe revenue, Zevo settlement, trading P&L, accounting, and cash flow across all 12 projects.",
+        reportsTo: "CEO",
+        groups: [
+          { label: "Daily Finance", skills: ["CFO Daily","Monthly Accounting","Weekly P&L"] },
+          { label: "Reconciliation", skills: ["Revenue Reconciliation","Expense Reconciliation","Expense Anomaly Detection","Unpaid Invoices"] },
+          { label: "Alerts & Payments", skills: ["Refunds & Disputes Watcher","Booking Expiry Alert","Stripe Payment Summary"] },
+          { label: "Productivity", skills: ["Google Workspace","Airtable","Notion","PowerPoint"] },
+          { label: "Communication", skills: ["Himalaya Email","iMessage"] }
+        ]
+      },
+      {
+        id: "CMO", name: "Growth & Brand",
+        desc: "Marketing strategy, campaign execution, social channels, and brand KPIs — from Korean diaspora content to global reach.",
+        reportsTo: "CEO",
+        groups: [
+          { label: "Marketing", skills: ["Marketing Daily KPI","Customer Support Daily"] },
+          { label: "Social & Media", skills: ["X / Twitter","YouTube Content","Spotify","GIF Search","Song Search"] },
+          { label: "Visual Creative", skills: ["Architecture Diagram","Comic Creator","Infographic Generator","Claude Design","Excalidraw","Pixel Art","Popular Web Designs","Manim Video","p5.js","ASCII Art","ASCII Video"] },
+          { label: "Content & Brand", skills: ["Creative Ideation","Design.md","Songwriting & AI Music"] },
+          { label: "Presentations", skills: ["PowerPoint","Google Workspace"] }
+        ]
+      },
+      {
+        id: "COO", name: "Operations",
+        desc: "Oversees customer support, host operations, and fleet management. Owns the operational P&L and service quality across all venues.",
+        reportsTo: "CEO",
+        groups: [
+          { label: "Fleet & Vehicles", skills: ["Fleet Maintenance Alert","Vehicle Health Weekly","Vehicle Overuse Alert","Host-Renter Tracker"] },
+          { label: "Operations", skills: ["Daily Ops Report","Weekly Ops Report","Backup Status","Revenue Reconciliation","Refunds & Disputes Watcher"] },
+          { label: "Monitoring", skills: ["Agent Execution History","Host Snapshot","Event Alerts","Stripe Summary","Apex Futures P&L"] },
+          { label: "Smart Home & Infra", skills: ["OpenHue Smart Lighting","Tool Gap Analyzer","Webhook Subscriptions"] }
+        ]
+      },
+      {
+        id: "CTO", name: "Engineering",
+        desc: "12 repos, 3 servers, 30+ containers. Owns architecture, code quality, infra stability, and AI agent tooling.",
+        reportsTo: "CEO",
+        groups: [
+          { label: "Engineering Ops", skills: ["CTO Weekly KPI","Backend Engineer Daily","Skill Authoring","Tool Gap Analyzer","QA Testing (Dogfood)"] },
+          { label: "Software Dev", skills: ["Systematic Debugging","Test-Driven Development","Subagent-Driven Development","Node Inspector","Python Debugpy","Code Review Request","Plan Writing","Writing Plans"] },
+          { label: "GitHub", skills: ["GitHub Issues","PR Workflow","Code Review","Repo Management","Codebase Inspection","GitHub Auth"] },
+          { label: "AI Agents", skills: ["Claude Code","Codex CLI","Hermes Agent","OpenCode CLI"] },
+          { label: "ML / AI Infra", skills: ["HuggingFace Hub","vLLM","llama.cpp","Outlines","Weights & Biases","LM Evaluation Harness","Jupyter Live Kernel","Native MCP Client","Webhook Subscriptions"] },
+          { label: "Models & Training", skills: ["AudioCraft","Segment Anything","Axolotl","TRL Fine-Tuning","Unsloth"] }
+        ]
+      },
+      {
+        id: "PM", name: "Product Management",
+        desc: "Roadmap, backlog, specs, and release planning. Translates business needs into executable engineering requirements.",
+        reportsTo: "CEO",
+        groups: [
+          { label: "Planning", skills: ["Sprint Daily Status","Plan Writing","Writing Plans","Tool Gap Analyzer"] },
+          { label: "GitHub", skills: ["GitHub Issues","PR Workflow","Code Review Request","Codebase Inspection"] },
+          { label: "Productivity", skills: ["Linear","Notion","Google Workspace","Airtable","PowerPoint"] },
+          { label: "Research", skills: ["ArXiv Search","Blog Watcher"] },
+          { label: "Design & Creative", skills: ["Design.md","Creative Ideation","Claude Design"] }
+        ]
+      },
+      {
+        id: "LGL", name: "Legal & Compliance",
+        desc: "Terms of service, privacy, regulatory monitoring, and dispute support. Manages legal risk across all 12 ventures.",
+        reportsTo: "CEO",
+        groups: [
+          { label: "Compliance", skills: ["Legal Compliance Weekly","Refunds & Disputes Watcher"] },
+          { label: "Research", skills: ["ArXiv Search","Blog Watcher","LLM Wiki","Research Paper Writing"] },
+          { label: "Documentation", skills: ["Obsidian","PowerPoint","Design.md","OCR & Documents","Nano PDF"] },
+          { label: "Productivity", skills: ["Google Workspace","Airtable","Notion"] },
+          { label: "Communication", skills: ["Himalaya Email","iMessage"] }
+        ]
+      },
+      {
+        id: "CPO", name: "Process Optimization",
+        desc: "Meta-agent. Monitors the agent system itself — token efficiency, bottlenecks, workflow health — and proposes improvements to CEO.",
+        reportsTo: "CEO",
+        groups: [
+          { label: "System Health", skills: ["Agent Execution History","Token Usage Analyzer","Bottleneck Detector","System Health Report"] },
+          { label: "Process Design", skills: ["Skill Authoring","Tool Gap Analyzer","Plan Writing","Webhook Subscriptions"] },
+          { label: "Productivity", skills: ["Notion","Linear","Google Workspace","Airtable"] }
+        ]
+      }
+    ]
+  },
+  eng: {
+    label: "Engineering",
+    agents: [
+      {
+        id: "BE", name: "Backend Engineer",
+        desc: "REST APIs, Stripe & Tesla Fleet integrations, DB schema, auth, and business logic for mongoori-rides.",
+        reportsTo: "CTO",
+        groups: [
+          { label: "API & Server", skills: ["REST API Design","Express.js","Node.js","DB Schema","Query Optimization"] },
+          { label: "Integrations", skills: ["Stripe Payments","Stripe Webhooks","Tesla Fleet API","Vehicle Control","Auth & JWT"] },
+          { label: "Dev Tools", skills: ["Systematic Debugging","Code Review Request","GitHub Issues","Node Inspector"] }
+        ]
+      },
+      {
+        id: "FE", name: "Frontend Engineer",
+        desc: "React UI — booking, payment, cancellation, and host dashboard. Connects to backend APIs with responsive, accessible design.",
+        reportsTo: "CTO",
+        groups: [
+          { label: "React", skills: ["Component Library","State Management","React Router","Form Handling","Error Boundaries"] },
+          { label: "Features", skills: ["Booking Flow","Payment UI","Host Dashboard","Cancellation Flow","Responsive Layout"] },
+          { label: "Dev Tools", skills: ["GitHub Issues","PR Workflow","Code Review Request","Codebase Inspection"] }
+        ]
+      },
+      {
+        id: "DEVOPS", name: "DevOps",
+        desc: "CI/CD pipelines, Docker containers, server monitoring, backup, incident response, and security patching.",
+        reportsTo: "CTO",
+        groups: [
+          { label: "Infrastructure", skills: ["Docker Management","Caddy Config","PM2 Process","Tailscale VPN","Server Provisioning"] },
+          { label: "Monitoring", skills: ["Log Analysis","Uptime Monitoring","Backup Status","Incident Response","Alert Management"] },
+          { label: "Automation", skills: ["GitHub Actions","Deploy Scripts","Webhook Subscriptions","Cron Jobs"] }
+        ]
+      },
+      {
+        id: "UX", name: "UX/UI Designer",
+        desc: "Wireframes, prototypes, design system, and user flow specs for booking, payment, and host management experiences.",
+        reportsTo: "PM",
+        groups: [
+          { label: "Design", skills: ["Wireframes","Prototypes","Design System","Component Specs","Accessibility"] },
+          { label: "Flows", skills: ["Booking Flow","Payment Flow","Host Dashboard","Cancellation UX","Mobile Responsive"] },
+          { label: "Tools", skills: ["Claude Design","Excalidraw","Design.md","Architecture Diagram"] }
+        ]
+      }
+    ]
+  },
+  fin: {
+    label: "Finance",
+    agents: [
+      {
+        id: "ACCT", name: "Accountant / Bookkeeper",
+        desc: "Daily books — records every Stripe transaction, revenue, fee, and refund. Provides clean data for CFO reporting.",
+        reportsTo: "CFO",
+        groups: [
+          { label: "Daily Books", skills: ["Transaction Logging","Revenue Entry","Fee Recording","Refund Tracking","Ledger Reconciliation"] },
+          { label: "Reporting", skills: ["CFO Reports","Data Export","Period Summaries","Anomaly Flagging"] }
+        ]
+      },
+      {
+        id: "REV", name: "Revenue & Reconciliation",
+        desc: "Stripe fee reconciliation, Zevo 25% commission verification, and host payout calculations.",
+        reportsTo: "CFO",
+        groups: [
+          { label: "Reconciliation", skills: ["Stripe Fee Audit","Platform Commission Verify","Zevo Settlement","Host Payout Calc"] },
+          { label: "Reporting", skills: ["Revenue Report","Settlement Report","Exception Handling","Period Close"] }
+        ]
+      },
+      {
+        id: "RFD", name: "Refunds & Disputes",
+        desc: "Cancellation policy enforcement, Stripe refunds, chargeback evidence submission, and dispute trend reporting.",
+        reportsTo: "CFO",
+        groups: [
+          { label: "Refunds", skills: ["Policy Review","Stripe Refund Exec","Partial Refund","Refund Log"] },
+          { label: "Disputes", skills: ["Chargeback Response","Evidence Submission","Dispute Tracker","Trend Report"] }
+        ]
+      },
+      {
+        id: "TAX", name: "Tax & Compliance",
+        desc: "1099 preparation, tax deduction tracking, regulatory change monitoring, and CFO-level risk reviews.",
+        reportsTo: "CFO",
+        groups: [
+          { label: "Tax", skills: ["1099 Preparation","Deduction Tracking","Quarterly Estimate","Tax Calendar"] },
+          { label: "Compliance", skills: ["Regulatory Monitoring","Legal Coordination","Compliance Report","Risk Review"] }
+        ]
+      }
+    ]
+  },
+  ops: {
+    label: "Operations",
+    agents: [
+      {
+        id: "CS", name: "Customer Support",
+        desc: "Guest and host inquiries, cancellation guidance, refund FAQ, and issue escalation. Owns response SLA.",
+        reportsTo: "COO",
+        groups: [
+          { label: "Support", skills: ["Inquiry Response","Cancellation Guidance","Refund FAQ","Issue Escalation","SLA Tracking"] },
+          { label: "Tools", skills: ["iMessage","Himalaya Email","CS Dashboard","Feedback Collection"] }
+        ]
+      },
+      {
+        id: "FLT", name: "Fleet Operations",
+        desc: "Pickup and return checklists, vehicle condition logs, damage reports, Tesla Fleet API monitoring, and incident handling.",
+        reportsTo: "COO",
+        groups: [
+          { label: "Fleet", skills: ["Pickup Checklist","Return Checklist","Vehicle Status Log","Tesla Fleet Monitor","Odometer Tracking"] },
+          { label: "Incidents", skills: ["Damage Report","Accident Handling","Insurance Claim","Incident Log","Host Notification"] }
+        ]
+      },
+      {
+        id: "HST", name: "Host Operations",
+        desc: "Host onboarding, vehicle registration, quality monitoring, payout guidance, and host inquiry responses.",
+        reportsTo: "COO",
+        groups: [
+          { label: "Onboarding", skills: ["Host Verification","Vehicle Registration","Onboarding Guide","Document Review"] },
+          { label: "Management", skills: ["Quality Monitor","Churn Tracking","Payout Guidance","Host Inquiry Response","Availability Management"] }
+        ]
+      }
+    ]
+  }
+};
+
+// Count total skills
+let totalSkills = 0;
+Object.values(AGENTS).forEach(team => {
+  team.agents.forEach(agent => {
+    if (agent.groups) {
+      agent.groups.forEach(g => totalSkills += g.skills.length);
+    }
+  });
+});
+document.getElementById('total-skills').textContent = totalSkills;
+
+// Render teams
+const teamsEl = document.getElementById('teams');
+
+Object.entries(AGENTS).forEach(([key, team]) => {
+  const section = document.createElement('div');
+  section.className = 'team-section';
+
+  const cols = team.agents.length >= 4 ? '' : (team.agents.length === 3 ? ' cols-3' : ' cols-2');
+
+  section.innerHTML = `
+    <div class="team-label">
+      <span class="team-label-text">${team.label}</span>
+      <span class="team-label-line"></span>
+    </div>
+    <div class="team-grid${cols}">
+      ${team.agents.map(agent => renderCard(agent)).join('')}
+    </div>
+  `;
+
+  teamsEl.appendChild(section);
+});
+
+function renderCard(agent) {
+  const skillCount = agent.groups ? agent.groups.reduce((s, g) => s + g.skills.length, 0) : 0;
+  const reportsHtml = agent.reportsTo
+    ? `<span class="reports-badge">→ ${agent.reportsTo}</span>`
+    : `<span class="reports-badge" style="color:#3B82F6;border-color:rgba(59,130,246,.3);">Principal</span>`;
+
+  const groupsHtml = agent.groups ? agent.groups.map(g => `
+    <div class="skill-group">
+      <div class="skill-group-label">${g.label}</div>
+      <div class="skill-chips">${g.skills.map(s => `<span class="skill-chip">${s}</span>`).join('')}</div>
+    </div>
+  `).join('') : '';
+
+  return `
+    <div class="agent-card" onclick="toggleCard(this)">
+      <div class="agent-card-top">
+        <div class="agent-head">
+          <span class="agent-badge">${agent.id}</span>
+          <span class="agent-pulse"></span>
+        </div>
+        <div class="agent-name">${agent.name}</div>
+        <div class="agent-desc">${agent.desc}</div>
+      </div>
+      <div class="agent-foot">
+        <span class="agent-reports">${reportsHtml}</span>
+        <span class="agent-expand">
+          <span>${skillCount} skills</span>
+          <svg class="expand-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+      <div class="agent-skills">${groupsHtml}</div>
+    </div>
+  `;
+}
+
+function toggleCard(card) {
+  card.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

@@ -36,10 +36,10 @@ You can open the site directly in a browser, or serve it with a simple static se
 
 ```bash
 cd mongoori-www
-python3 -m http.server 8000
+python3 -m http.server 3173
 ```
 
-Then open `http://localhost:8000` in your browser.
+Then open `http://localhost:3173` in your browser.
 
 ## Deployment
 
