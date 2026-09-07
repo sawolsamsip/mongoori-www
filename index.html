@@ -22,8 +22,22 @@
 <link rel="preconnect" href="https://afocirmbqdxnkyescnev.supabase.co" crossorigin/>
 <link rel="preconnect" href="https://digitalassets.tesla.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/styles.css?v=20"/>
+<link rel="stylesheet" href="/styles.css?v=21"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Mongoori LLC","url":"https://mongoori.com/","description":"Mongoori builds the everyday systems around Tesla driving.","address":{"@type":"PostalAddress","streetAddress":"7545 Irvine Center Drive, Suite 276","addressLocality":"Irvine","addressRegion":"CA","postalCode":"92618","addressCountry":"US"},"email":"contact@mongoori.com","telephone":"+1-949-385-3271"}</script>
+<!-- Google Analytics 4 — same property as rides.mongoori.com, on purpose.
+     A visitor who reads here and books there is one person and one session; a second property would
+     split them and file the booking as referred by mongoori.com, hiding where they really came from.
+     cookie_domain writes the id on the apex so both hosts read it, and linker.domains stitches the hop. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEGFXWBH93"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SEGFXWBH93', {
+  cookie_domain: 'mongoori.com',
+  linker: { domains: ['mongoori.com', 'rides.mongoori.com'] }
+});
+</script>
 </head>
 <body>
 <header class="nav">

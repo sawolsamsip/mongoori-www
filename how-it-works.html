@@ -366,6 +366,20 @@
       .earnings-table { font-size: 0.8em; }
     }
   </style>
+<!-- Google Analytics 4 — same property as rides.mongoori.com, on purpose.
+     A visitor who reads here and books there is one person and one session; a second property would
+     split them and file the booking as referred by mongoori.com, hiding where they really came from.
+     cookie_domain writes the id on the apex so both hosts read it, and linker.domains stitches the hop. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEGFXWBH93"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SEGFXWBH93', {
+  cookie_domain: 'mongoori.com',
+  linker: { domains: ['mongoori.com', 'rides.mongoori.com'] }
+});
+</script>
 </head>
 
 <body>

@@ -233,6 +233,19 @@
       .post-article { padding: 0 16px; }
     }
   </style>
+<!-- Google Analytics 4 — same property as the rest of the site and as rides.mongoori.com, so a
+     reader who finishes a post and goes on to book stays one session instead of arriving at rides
+     as a fresh visitor referred by our own blog. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEGFXWBH93"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SEGFXWBH93', {
+  cookie_domain: 'mongoori.com',
+  linker: { domains: ['mongoori.com', 'rides.mongoori.com'] }
+});
+</script>
 </head>
 
 <body>
