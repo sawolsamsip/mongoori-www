@@ -1,0 +1,2 @@
+const items=document.querySelectorAll('.opening,.rides-copy,.ecosystem-head,.service,.operations-copy,.closing');const enter=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('is-in')),{threshold:.1});items.forEach(x=>enter.observe(x));
+document.querySelectorAll('a[href^="https://"]').forEach(link=>{if(new URL(link.href).hostname!==location.hostname){link.target='_blank';link.rel='noopener noreferrer'}});
