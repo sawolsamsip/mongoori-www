@@ -242,13 +242,15 @@ a:focus-visible{outline:2px solid var(--clay);outline-offset:5px}.nav a:not(.wor
    was set 14px mono, which is none of those: mono doing a body job, at a size that exists nowhere else
    on the page, without the letter-spacing that makes mono read as a label. It looked like a terminal
    block dropped into a magazine. The heading keeps mono because a kicker is what it is. */
+/* The address itself lives in the footer, once, in the footer's own mono idiom. This section is the
+   map and its kicker — nothing else — because the same address printed here, drawn again on Google's
+   embed and set a third time below was three statements of one fact in two typefaces. */
 .findus{padding:96px 5vw;background:var(--pale);color:var(--forest)}
-.findus h2{font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin:0 0 18px;opacity:.6}
-.findus p{font:23px/1.44 var(--sans);letter-spacing:-.04em;max-width:630px;margin:0 0 36px}
-.findus-map{width:100%;height:340px;border:0;display:block;filter:grayscale(.35) contrast(1.05)}
+.findus h2{font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin:0 0 20px;opacity:.6}
+.findus-map{width:100%;height:300px;border:0;display:block;filter:grayscale(.35) contrast(1.05)}
 footer .addr{font-style:normal;display:flex;flex-direction:column;gap:2px;max-width:260px}
 footer .addr-line{font:10px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:inherit}
 footer .addr-map{font:10px var(--mono);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:inherit;margin-top:6px;opacity:.75}
 footer .addr-map:hover{color:var(--clay);opacity:1}
 footer .addr-note{font:9px/1.5 var(--mono);color:#b6c3b9;text-transform:none;letter-spacing:normal;margin-top:8px}
-@media(max-width:1100px){footer .addr{order:1;max-width:none}.findus{padding:64px 6vw}.findus p{font-size:19px}.findus-map{height:260px}}
+@media(max-width:1100px){footer .addr{order:1;max-width:none}.findus{padding:64px 6vw}.findus-map{height:240px}}
